@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package blackboard;
 
-import blackboard.Model.Transaction;
-import static java.lang.System.out;
-import java.util.Date;
+import Factory.FileReaderFactory;
+import blackboard.Model.I_FileReader;
 
 /**
  *
@@ -21,24 +16,20 @@ public class Blackboard {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Transaction t = new Transaction();
+        FileReaderFactory factory = new FileReaderFactory();
         
-        String payee = " S David   gabriel    garcia         E   ";
-        String memo = "  S Dave       is   the cool dude     around   town E ";
-        System.out.print("NAME BEFORE: " + payee);
-        System.out.print("\nMEMO BEFORE: " + memo);
+        I_FileReader csvFile = factory.getFileReader("csv");
+        I_FileReader qfxFile = factory.getFileReader("qfx");
+        I_FileReader ofxFile = factory.getFileReader("ofx");
 
-        t.setMemo(memo);
-        t.setPayee(payee);
-        t.setDate(new Date());                
-        t.setTransactionAmount(12.456);
-
+        final String FILE_1 = "C:\\Users\\David_Garcia\\Downloads\\sample.csv";
+        final String FILE_2 = "C:\\Users\\David_Garcia\\Downloads\\sample-noheader.csv";
+        final String FILE_3 = "C:\\Users\\David_Garcia\\Downloads\\Checking1.csv";
+        
+        System.out.println(csvFile.getFileInfo(FILE_3));
+        
+        
        
-        System.out.print("\nNAME AFTER: " + t.getPayee());
-        System.out.print("\nMEMO AFTER: " + t.getMemo());
-        System.out.println("\n" + t.getDate().toString());
-        System.out.println(t.getTransactionAmount().toString());
-        
         System.out.print("\n\n");
     }
     
