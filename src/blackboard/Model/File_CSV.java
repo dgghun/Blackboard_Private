@@ -10,6 +10,7 @@ import org.apache.commons.csv.CSVRecord;
 
 /**
  *  CSV File reader using Apache Commons CSV
+ * NEED TO ADJUST TO HOW OUR IMPLEMENTATION
  */
 public class File_CSV implements I_FileReader{
     
@@ -34,11 +35,19 @@ public class File_CSV implements I_FileReader{
                     .withIgnoreHeaderCase()
                     .withTrim());
             
+            
+            
             Iterable<CSVRecord> csvRecord =  csvParser.getRecords();    //Get record itereator
             
             // Do something with the records
             for(CSVRecord record : csvRecord){
-                System.out.println(record.getRecordNumber() + ": " + record.toString());
+                System.out.println("RECORD " + record.getRecordNumber() + ": " + record.toString());
+                System.out.println("Column 0: " + record.get(0).trim());
+                System.out.println("Column 1: " + record.get(1).trim());
+                System.out.println("Column 2: " + record.get(2).trim());
+                System.out.println("Column 3: " + record.get(3).trim());
+                System.out.println("Column 4: " + record.get(4).trim());
+                System.out.println("\n");    
             }
             
         }catch(Exception e){
